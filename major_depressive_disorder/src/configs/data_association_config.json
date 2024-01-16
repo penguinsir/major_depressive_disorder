@@ -1,0 +1,56 @@
+{
+  "available_types": ["id", "date", "continuous", "nominal", "ordinal"],
+  "data": {
+    "demographics":{
+      "patient_id": false,
+      "gender": true,
+      "race": false,
+      "resident_status": false,
+      "date_of_birth": true
+    },
+    "clinical": {
+      "patient_id": false,
+      "date_of_admission": false,
+      "date_of_discharge": false,
+      "medical_history_dia": true,
+      "medical_history_sud": true,
+      "medical_history_hbp": true,
+      "medical_history_ren": true,
+      "medical_history_tum": true,
+      "medical_history_anx": true,
+      "medical_history_mood": true,
+      "trt_anx": true,
+      "trt_con": true,
+      "trt_adt": true,
+      "trt_ssr": true,
+      "trt_the": true,
+      "trt_oth": true,
+      "symptom_1": true,
+      "symptom_2": true,
+      "symptom_3": true,
+      "symptom_4": true,
+      "symptom_5": true,
+      "weight": true,
+      "height": false,
+      "cgis_adm": false,
+      "cgis_dis": false,
+      "gaf_lv": true
+    },
+    "bill_id": {
+      "bill_id": false,
+      "patient_id": false,
+      "date_of_admission": false
+
+    },
+    "bill_amount": {
+      "bill_id": false,
+      "amount": true
+    },
+    "additional":{
+      "hospitalization_duration_days": true,
+      "cgis_change": false,
+      "cgis_improve": false,
+      "age": true
+    }
+  }
+}  

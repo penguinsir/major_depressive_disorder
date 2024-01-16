@@ -1,0 +1,148 @@
+### Problem Statement ###
+
+A pharmaceutical company is looking to generate insights using data from routine clinical practice to better understand the treatment of major depressive disorder (MDD). MDD is typically treated with antidepressants and psychological therapy. Individuals who do not respond to an antidepressant therapy may be co-prescribed an adjunctive medication (e.g., antipsychotic, anticonvulsant, or lithium) alongside their antidepressant to help improve their symptoms.
+
+You have access to a synthetic electronic health record (EHR) dataset (attached in the email) of approximately 3,700 patients who received mental healthcare for MDD in a major hospital system. The data dictionary can be found at the end of this document. Given the data at hand, suggest one research question which can help understand the treatment that patients with MDD receive in routine care.
+
+### Goals and Expectations ###
+
+The goal of this challenge is to assess your capability in designing your own study given a problem statement and data at hand, consider the potential strengths and limitations of applying various analytical techniques, and assess your ability in “getting your hands dirty” with real-world data.
+
+Two expected outcomes are:
+1. Your code (written in Python and/or R) in a GitHub repository (recommended).
+2. Your slide deck (PowerPoint recommended) summarizing your data, study design, approach, results, and key findings.
+
+This challenge should take up to two hours of effort, including the time taken to develop the deliverables. As such, we expect the analysis to be limited in scope, but it is important for you to articulate what your analysis achieves and how this could be refined in further research. You are expected to present your work at the next interview. The presentation should take 10 minutes. Please allow at least 24 hours between submitting your code and presentation and the scheduled interview so our team can be well prepared for the interview.
+
+### My Preliminary Observation ###
+
+Four datasets are provided: bill_amounts.csv, bill_id.csv, clinical_data.csv and demographics.csv
+
+The provided synthetic EHR dataset (clinical_data.csv) can be treated as a pre-post treatment observational study that involves multiple treatment arms (eg. Anxiolytics, Anticonvulsants, Anti-depressants, SSRI, Psychotherapy, Other, or Combination Treatment).  The main outcome variables in this case will be cgis_adm and cgis_dis. 
+
+The demographics.csv contains demographic information of the patients. 
+
+The bill_amount.csv contains the cost of the treatment for the patients and can be joined to the main dataset via the bill_id.csv.
+
+### Objective ###
+
+1. Preliminary Observation and Summary: 
+  - Check data for the extent of missingness in order to decide what type of investigation can be conducted
+  - Investigate outliers
+  - Decide which treatment arms to investigate for the effectiveness of treatment based on the availability of data
+
+2. Preliminary Data Analysis and Data Cleaning:
+  - Handling missing data 
+  - Dealing with outliers 
+
+3. 
+
+Determine effectiveness of different types of treatment on MDD.
+Types of treatment: Anxiolytics, Anticonvulsants, Anti-depressants, SSRI, psychotherapy, other.
+
+Main types of treatment: Anti-depressants, psychological therapy, Both, 
+
+### Background Research ###
+
+### Problem Source: Problem Source: Major Depressive Disorder (MDD) ### 
+
+Major depressive disorder (MDD) is a debilitating disease that is characterized by depressed mood, diminished interests, impaired cognitive function such as disturbed sleep or appetite. Diagnosis of MDD: At least 5 of the following symptoms must be present continuously for 2 weeks; at least 1 should be either depressed mood or lack of interest: 
+
+1. Depressed mood (or irritability in children and adolescents)
+2. Lack of interest or pleasure
+3. Appetite change or weight change
+4. Insomnia or hypersomnia
+5. Psychomotor agitation or retardation
+6. Fatigue or loss of energy
+7. Feelings of worthlessness or guilt
+8. Decreased concentration
+9. Recurrent thoughts of death and suicidal ideation
+
+Additionally, Symptoms should not be secondary to a substance (eg. drug abuse, medication) or general medical conditions (eg. hypothyroidism). Depression is more prevalent among patients with medical illness and is harder to treat in medically ill patients. Treating both medical and depressive symptoms can improve the outcome of medical treatment and adherence to medical therapy and rehabilitation. In our study, the dataset has provided underlying conditions of diabetes, drug abuse, high blood pressure, renal failure, solid tumour, anxiety disorder, other mood disorders.  
+
+Treatment of MDD: Pharmacotherapy and Psychotherapy
+Different types of antidepressants can be used to alleviate MDD. However, they can differ in pharmacologic and side effect profile. The drug treatments available in dataset are anxiolytics, anticonvulsants, antidepressants, selective serotonin reuptake inhibitor(SSRI), other psychiatric medications. 
+
+Anxiolytics are a class of medications used to prevent or treat anxiety symptoms. While anxiolytics may help with anxiety symptoms, they are not typically considered first-line treatments for MDD. 
+
+Anticonvulsants are primarily used to treat epilepsy and seizures but is found to be effective in the treatment of mood disorders, including Major Depressive Disorder (MDD). They are not first-line treatment and are prescribed adjunctively or as alternative therapies when traditional antidepressants are not effective or well-tolerated. 
+
+Antidepressants are a primary and widely used intervention for individuals experiencing symptoms of depression. The goal of antidepressant medications is to alleviate the symptoms of depression by affecting neurotransmitters
+
+SSRIs are a specific type of antidepressants are frequently used as a first-line treatment of depressive disorders because their specificity results in fewer drug-drug interactions, safety in overdose, and a favorable side effect profile. They also effectively treat anxiety disorders and other psychiatric comorbidities frequently associated with depression.
+
+Psychotherapy are considered first-line treatment for MDD and is typical use together with antidepressants
+
+### Outcome Variable: Clinical Global Impressions-Severity (CGI-S)###
+
+The CGI-S is a single-item, 7-point scale designed to assess global impression of severity. The CGI-S requires the clinician to rate the severity of patient’s illness from a global perspective, relative to the clinician’s experience with patients who have MDD. The brevity and simplicity of CGI-S makes it a more practical measurement tool that can easily be used by a clinician. CGI-S directly reflects a clinician’s judgment and captures clinical impressions of depression severity based on observed and reported symptoms, behavior, and function in the past 7 days. The scale has also shown good inter-rater reliability among clinicians.
+
+The CGI-I is a 7-point scale that requires the clinician to assess how much the patient'sillness has improved or worsened relative to a baseline state. The CGI-I score generally tracks with the CGI-S such that improvement in one follows the other. Anchors for scoring, however, are quite different, and the CGI-I is based upon changes from the initiation of treatment in contrast to changes from the preceding week of treatment. Consequently, the two CGI scores can occasionally be dissociated such that a clinician may notice changes in the CGI-I relative to baseline despite no recent changes in the overall CGI severity score or vice versa.
+
+### Relevant Important Features that are likely to affect MDD base on background research ###
+
+1. Gender: Women are more likely to have MDD because of hormonal fluctuations during menopause and more active help-seeking behaviour (Reporting Bias)
+
+2. History of Diabetes: It is shown that there is an association between diabetes and mdd. The stress and demands of managing a chronic condition like diabetes can contribute to the development or exacerbation of depressive symptoms. 
+
+3. History of substance abuse: It is shown that there is an association between substance abuse and mdd. Patients may turn to substances like alcohol or drugs as a form of self-medication to cope with emotional pain or distress. However, substance abuse can ultimately worsen depressive symptoms and create a cycle of dependence.
+
+4. History of high blood pressure: There is a potential association between hbp and mdd due to common life styles that can contribute to MDD. 
+
+5. History of renal failure: It is shown that there is an association between renal failure and severity of mdd. Renal failure can impact the body's physiological functions, including the regulation of certain chemicals and hormones that are associated with mood.
+
+6. History of solid tumour: There is a potential association between solid tumour and mdd. The biological impact of cancer, its treatment, and the presence of a tumor can affect the body's physiology and potentially contribute to depressive symptoms. Factors such as inflammation, changes in neurotransmitter function, and the overall stress on the body may play a role. A cancer diagnosis and the subsequent treatment can have a profound psychological impact on individuals (eg. exacerbate severity of mdd)
+
+7. History of anxiety disorder: It is shown that there is an association between anxiety and mdd and they are conditions that can co-occur in patients. Anxiety disorders and depression often coexist. Individuals with a history of anxiety disorders may be more prone to developing depression, and vice versa. The presence of both conditions can contribute to increased symptom severity.
+
+8. History of other mood disorder. There is a potential association between other mood disorder and MDD. Mood disorders, such as bipolar disorder or cyclothymic disorder, can coexist with MDD. The presence of comorbid mood disorders can impact the severity and course of depressive symptoms.
+
+### Research Question ###
+
+What is the effectiveness of the current different treatment options in a real-world setting?
+
+### Relevant Possible Confounders based on BG research ###
+
+1. Comorbid Conditions: Individuals with MDD often have comorbid conditions, such as anxiety disorders, substance use disorders, or other mental health issues. 
+
+2. Medication Effects: Some medications used to treat MDD can have side effects or influence study outcomes. Researchers should consider whether participants are taking antidepressants or other medications that may impact the results. 
+
+3. Socioeconomic Status (SES): Socioeconomic factors, such as income, education, and employment status, can be confounding variables. People with lower SES may face additional stressors that contribute to depression.
+
+4. Life Events and Stressors: Traumatic life events, chronic stressors, or ongoing life difficulties can contribute to the development or exacerbation of MDD. 
+
+### Additional Notes ### 
+
+1. Converted to outcome into binary improvement or worsen for fisher exact test (2 by 2)
+
+### Observations from Exploratory Data Analysis ### 
+
+Common practices of treating abnormal sleep patterns (symptom_1) are Anticonvulsants (trt_con), Psychotherapy (trt_the) and Others (trt_oth)
+Sometimes Anticonvulsants (trt_con)
+
+Common practices of treating anhedonia (symptom_2) are Anti-depressants (trt_adt), Psychotherapy (trt_the), Others (trt_oth)
+Sometimes Anticonvulsants (trt_con)
+
+Common practices of treating poor appetite (symptom_3) are Anti-depressants (trt_adt), Psychotherapy (trt_the), Others (trt_oth)
+Sometimes Anticonvulsants (trt_con)
+
+Common practices of treating poor depression (symptom_4) are Anti-depressants (trt_adt), Psychotherapy (trt_the), Others (trt_oth) 
+Sometimes Anticonvulsants (trt_con)
+
+Common practices of treating poor suicidal thoughts (symptom_5) are Anti-depressants (trt_adt), Psychotherapy (trt_the), Others (trt_oth) 
+Sometimes Anticonvulsants (trt_con)
+
+Treatment pattern appears to be the same regardless of which symptoms are present. We would expect a difference in treatment pattern for suicidal thoughts as it is a more severe form of depression as compared to the others. There is no discerning features that differentiates the prescription of SSRIs even though it is the recommended first-line treatment for depressive disorder.
+
+Current presence of  (loss of interest/pleasure) (0=No, 1=Yes)
+
+Current poor appetite (0=No, 1=Yes)
+Currently feeling depressed or hopeless (0=No, 1=Yes)
+Current presence of suicidal thoughts (0=No, 1=Yes)
+
+Current weight of the patient (kg)
+
+Current height of the patient (cm)
+
+Clinical Global Impression Scale- Severity at the time of an inpatient or emergency admission (Score 
+

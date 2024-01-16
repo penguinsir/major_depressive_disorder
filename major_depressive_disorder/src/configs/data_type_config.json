@@ -1,0 +1,56 @@
+{
+  "available_types": ["id", "date", "continuous", "nominal", "ordinal"],
+  "data": {
+    "demographics":{
+      "patient_id": "id",
+      "gender": "nominal",
+      "race": "nominal",
+      "resident_status": "nominal",
+      "date_of_birth": "date"
+    },
+    "clinical": {
+      "patient_id": "id",
+      "date_of_admission": "date",
+      "date_of_discharge": "date",
+      "medical_history_dia": "nominal",
+      "medical_history_sud": "nominal",
+      "medical_history_hbp": "nominal",
+      "medical_history_ren": "nominal",
+      "medical_history_tum": "nominal",
+      "medical_history_anx": "nominal",
+      "medical_history_mood": "nominal",
+      "trt_anx": "nominal",
+      "trt_con": "nominal",
+      "trt_adt": "nominal",
+      "trt_ssr": "nominal",
+      "trt_the": "nominal",
+      "trt_oth": "nominal",
+      "symptom_1": "nominal",
+      "symptom_2": "nominal",
+      "symptom_3": "nominal",
+      "symptom_4": "nominal",
+      "symptom_5": "nominal",
+      "weight": "continuous",
+      "height": "continuous",
+      "cgis_adm": "ordinal",
+      "cgis_dis": "ordinal",
+      "gaf_lv": "ordinal"
+    },
+    "bill_id": {
+      "bill_id": "id",
+      "patient_id": "id",
+      "date_of_admission": "date"
+
+    },
+    "bill_amount": {
+      "bill_id": "id",
+      "amount": "continuous"
+    },
+    "additional":{
+      "hospitalization_duration_days": "continuous",
+      "cgis_change": "ordinal",
+      "cgis_improve": "nominal",
+      "age": "continuous"
+    }
+  }
+}  
